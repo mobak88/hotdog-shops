@@ -1,7 +1,13 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const ShopMap = ({ coords, about }) => {
+type ShopMapType = {
+  coords: LatLngExpression;
+  about: string | undefined;
+};
+
+const ShopMap = ({ coords, about }: ShopMapType) => {
   return (
     <MapContainer center={coords} zoom={13} scrollWheelZoom={false}>
       <TileLayer

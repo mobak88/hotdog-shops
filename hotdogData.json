@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Gourmet Dog",
-    "location": "Nygårdsgaten 1, 3210 Sandefjord",
+    "location": "Storgata 1, 3210 Sandefjord",
     "photo": "/src/assets/shopImages/alison-pang-fPCDO6ks66w-unsplash.jpg",
     "rating": 4.7,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "name": "Reindeer Dog",
-    "location": "Storgata 5, 3210 Sandefjord",
+    "location": "Kvartsveien 6, 3214 Sandefjord",
     "photo": "/src/assets/shopImages/amanda-lim-_3EQ99lceac-unsplash.jpg",
     "rating": 3.8,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Spicy Sausage Dog",
-    "location": "Øvre Langgate 22, 3210 Sandefjord",
+    "location": "Helgerødveien, 3210 Sandefjord",
     "photo": "/src/assets/shopImages/andersen-jensen-Hk2eu3OODdg-unsplash.jpg",
     "rating": 4.2,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "name": "Chicago-Style Dog",
-    "location": "Thor Dahlsgate 11, 3210 Sandefjord",
+    "location": "Lahelleveien 43, 3218 Sandefjord",
     "photo": "/src/assets/shopImages/drew-dempsey-ZT3jp63MT0w-unsplash.jpg",
     "rating": 4.9,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "name": "Banh Mi Dog",
-    "location": "Løkkegata 13, 3210 Sandefjord",
+    "location": "Strandpromenaden 9, 3208 Sandefjord",
     "photo": "/src/assets/shopImages/jay-wennington-UgolPhUcu9g-unsplash.jpg",
     "rating": 4.0,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "name": "Bacon Wrapped Dog",
-    "location": "Gunnerusgate 1, 3210 Sandefjord",
+    "location": "Torggata 9, 3210 Sandefjord",
     "photo": "/src/assets/shopImages/jessica-loaiza-glqTtszXfM0-unsplash.jpg",
     "rating": 4.6,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "name": "Korean BBQ Dog",
-    "location": "Hospitalsgata 11, 3210 Sandefjord",
+    "location": "Leif Weldings vei 4, 3208 Sandefjord",
     "photo": "/src/assets/shopImages/likemeat-isjszWvbI_E-unsplash.jpg",
     "rating": 4.3,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "name": "Classic Hotdog",
-    "location": "Jernbanealleen 2, 3210 Sandefjord",
+    "location": "Haneholmveien 21, 3212 Sandefjord",
     "photo": "/src/assets/shopImages/timoune-aracama-CRnTIhqbsyU-unsplash.jpg",
     "rating": 4.5,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -74,7 +74,7 @@
   {
     "id": 9,
     "name": "Chili Cheese Hotdog",
-    "location": "Torvet 2, 3210 Sandefjord",
+    "location": "Ferjeveien 15, 3222 Sandefjord",
     "photo": "/src/assets/shopImages/victoria-shes-znQctcV3ngI-unsplash.jpg",
     "rating": 3.9,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",
@@ -83,7 +83,7 @@
   {
     "id": 10,
     "name": "Veggie Dog",
-    "location": "Storgata 17, 3210 Sandefjord",
+    "location": "Hågasletta 10, 3236 Sandefjord",
     "photo": "/src/assets/shopImages/viraj-bhalani-Bo5Z8wok680-unsplash.jpg",
     "rating": 4.1,
     "about": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cum distinctio pariatur animi exercitationem dolorem praesentium a quisquam fuga similique nisi placeat numquam, quo id velit necessitatibus consequuntur vel porro.",

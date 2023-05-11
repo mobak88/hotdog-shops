@@ -5,13 +5,22 @@ import { Route, Routes } from "react-router-dom";
 import data from "../hotdogData.json";
 import "./App.css";
 
+export type SingleShopDataType = {
+  photo: string;
+  name: string;
+  location: string;
+  rating: number;
+  id: number;
+  about: string;
+};
+
 function App() {
-  const [hotdogShops, setHotdogShops] = useState(data);
+  const [hotdogShops, setHotdogShops] = useState<SingleShopDataType[]>(data);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home hotdogShops={hotdogShops} />} />
         <Route
           path="/books/:id"
           element={<HotdogStore hotdogShops={hotdogShops} />}

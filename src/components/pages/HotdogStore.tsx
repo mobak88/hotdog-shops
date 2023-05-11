@@ -4,15 +4,7 @@ import Rating from "@mui/material/Rating";
 import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import ShopMap from "../shopMap/ShopMap";
-
-type SingleShopDataType = {
-  photo: string;
-  name: string;
-  location: string;
-  rating: number;
-  id: number;
-  about: string;
-};
+import { SingleShopDataType } from "../../App";
 
 type HotdogShopType = {
   hotdogShops: SingleShopDataType[];
@@ -20,6 +12,7 @@ type HotdogShopType = {
 
 const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
   const [hotdogShop, setHotdogShop] = useState<null | SingleShopDataType>(null);
+  const [shopCoords, setShopCoords] = useState<null | [number, number]>(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,6 +22,20 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
 
     setHotdogShop(filteredHotdogShop || null);
   }, [hotdogShops, id]);
+
+  useEffect(() => {
+    if (hotdogShop?.location) {
+      fetch(
+        `https://api.geoapify.com/v1/geocode/search?text=${
+          hotdogShop?.location
+        }&format=json&apiKey=${import.meta.env.VITE_GEOAPIFI_API}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setShopCoords([data.results[0].lat, data.results[0].lon]);
+        });
+    }
+  }, [hotdogShop]);
 
   return (
     <>
@@ -72,7 +79,7 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
           </Typography>
         </Box>
       </Box>
-      <ShopMap about={hotdogShop?.about} coords={[51.505, -0.09]} />
+      {shopCoords && <ShopMap about={hotdogShop?.about} coords={shopCoords} />}
     </>
   );
 };

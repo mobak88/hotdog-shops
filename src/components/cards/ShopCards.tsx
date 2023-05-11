@@ -1,9 +1,9 @@
-import data from "../../../hotdogData.json";
 import ShopCard from "./ShopCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import { HotdogShopType } from "../pages/Home";
 
-const ShopCards = () => {
+const ShopCards = ({ hotdogShops }: HotdogShopType) => {
   return (
     <Box
       sx={{
@@ -18,7 +18,7 @@ const ShopCards = () => {
         alignItems="center"
         style={{ maxWidth: "1500px" }}
       >
-        {data.map((shop, i) => (
+        {hotdogShops.map((shop, i) => (
           <Grid
             item
             key={i}
