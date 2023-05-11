@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -5,12 +6,18 @@ import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import { Link } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+
 type ShopCardType = {
   shopImage: string;
   shopName: string;
   shopLocation: string;
   shopRating: number;
   id: number;
+  setIsEditingShop: Dispatch<
+    SetStateAction<{ editing: boolean; id: null | number }>
+  >;
 };
 
 const ShopCard = ({
@@ -19,7 +26,16 @@ const ShopCard = ({
   shopLocation,
   shopRating,
   id,
+  setIsEditingShop,
 }: ShopCardType) => {
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (event.target instanceof HTMLButtonElement) {
+      event.preventDefault();
+      event.stopPropagation();
+      setIsEditingShop({ id: id, editing: true });
+    }
+  };
+
   return (
     <Link
       href={`/books/${id}`}
@@ -56,7 +72,7 @@ const ShopCard = ({
               </Typography>
               <Rating
                 name="half-rating-read"
-                defaultValue={shopRating}
+                value={shopRating ?? 0}
                 precision={0.5}
                 readOnly
               />
@@ -66,6 +82,13 @@ const ShopCard = ({
             </Typography>
           </Box>
         </CardContent>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <CardActions>
+            <Button onClick={handleButtonClick} variant="outlined" size="small">
+              Edit
+            </Button>
+          </CardActions>
+        </Box>
       </Card>
     </Link>
   );

@@ -20,7 +20,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home hotdogShops={hotdogShops} />} />
+        <Route
+          path="/"
+          element={
+            <Home hotdogShops={hotdogShops} setHotdogShops={setHotdogShops} />
+          }
+        />
         <Route
           path="/books/:id"
           element={<HotdogStore hotdogShops={hotdogShops} />}

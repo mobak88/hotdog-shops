@@ -1,9 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import ShopCard from "./ShopCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { HotdogShopType } from "../pages/Home";
+import { SingleShopDataType } from "../../App";
 
-const ShopCards = ({ hotdogShops }: HotdogShopType) => {
+interface ShopCardsInterface {
+  hotdogShops: SingleShopDataType[];
+  setIsEditingShop: Dispatch<
+    SetStateAction<{ editing: boolean; id: null | number }>
+  >;
+}
+
+const ShopCards = ({ hotdogShops, setIsEditingShop }: ShopCardsInterface) => {
   return (
     <Box
       sx={{
@@ -32,6 +40,7 @@ const ShopCards = ({ hotdogShops }: HotdogShopType) => {
             }}
           >
             <ShopCard
+              setIsEditingShop={setIsEditingShop}
               shopImage={shop.photo}
               shopName={shop.name}
               shopLocation={shop.location}

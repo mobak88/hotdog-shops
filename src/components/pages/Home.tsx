@@ -1,23 +1,33 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ShopCards from "../cards/ShopCards";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { SingleShopDataType } from "../../App";
 import { calculateDistance } from "../../helpers/calcDIstance";
 import SearchNearbyShops from "../searchNearbySHops/SearchNearbyShops";
+import EditHotdogShopForm from "../editHotdogShopForm/EditHotdogShopForm";
 
-export type HotdogShopType = {
+export interface HotdogShopType {
   hotdogShops: SingleShopDataType[];
+  setHotdogShops: Dispatch<SetStateAction<SingleShopDataType[]>>;
+}
+
+export type IsEditingShopType = {
+  editing: boolean;
+  id: null | number;
 };
 
-const Home = ({ hotdogShops }: HotdogShopType) => {
+const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
   const [nearbyShops, setNearbyShops] = useState<SingleShopDataType[] | []>([]);
   const [searchLocation, setSearchLocation] = useState("");
+  const [isEditingShop, setIsEditingShop] = useState<IsEditingShopType>({
+    editing: false,
+    id: null,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       if (searchLocation && searchLocation?.length > 0) {
-        console.log("object");
         const inputResponse = await fetch(
           `https://api.geoapify.com/v1/geocode/search?text=${searchLocation}&format=json&apiKey=${
             import.meta.env.VITE_GEOAPIFI_API
@@ -62,7 +72,9 @@ const Home = ({ hotdogShops }: HotdogShopType) => {
     fetchData();
   }, [searchLocation, hotdogShops]);
 
-  console.log(nearbyShops);
+  useEffect(() => {
+    console.log(isEditingShop);
+  }, [isEditingShop]);
 
   return (
     <Box
@@ -83,8 +95,26 @@ const Home = ({ hotdogShops }: HotdogShopType) => {
         setSearchLocation={setSearchLocation}
         nearbyShops={nearbyShops}
       />
-      {nearbyShops.length < 1 && <ShopCards hotdogShops={hotdogShops} />}
-      {nearbyShops.length > 0 && <ShopCards hotdogShops={nearbyShops} />}
+      {isEditingShop.editing && (
+        <EditHotdogShopForm
+          hotdogShops={hotdogShops}
+          id={isEditingShop.id}
+          setIsEditingShop={setIsEditingShop}
+          setHotdogShops={setHotdogShops}
+        />
+      )}
+      {nearbyShops.length < 1 && (
+        <ShopCards
+          hotdogShops={hotdogShops}
+          setIsEditingShop={setIsEditingShop}
+        />
+      )}
+      {nearbyShops.length > 0 && (
+        <ShopCards
+          hotdogShops={nearbyShops}
+          setIsEditingShop={setIsEditingShop}
+        />
+      )}
     </Box>
   );
 };
