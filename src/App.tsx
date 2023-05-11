@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/books/:id"
+          path="/store/:id"
           element={<HotdogStore hotdogShops={hotdogShops} />}
         />
       </Routes>

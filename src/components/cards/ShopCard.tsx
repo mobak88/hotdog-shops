@@ -38,7 +38,7 @@ const ShopCard = ({
 
   return (
     <Link
-      href={`/books/${id}`}
+      href={`/store/${id}`}
       sx={{
         maxWidth: 345,
         height: "100%",
