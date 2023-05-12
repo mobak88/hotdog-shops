@@ -26,29 +26,73 @@ const AddHotdogShop = ({ hotdogShops, setHotdogShops }: AddHotdogShopType) => {
   const handleCancelAddHotdogSHop = () => setIsAddinghotdogShop(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setNewHotdogShop((prev) => ({
-      ...(prev as SingleShopDataType),
-      [name]: name === "rating" ? parseFloat(value) : value,
-    }));
+    const { name, value, files } = e.target;
+    if (files && files.length > 0) {
+      const file = files[0];
+      setNewHotdogShop((prev) => ({
+        ...(prev as SingleShopDataType),
+        [name]: file,
+      }));
+    } else {
+      setNewHotdogShop((prev) => ({
+        ...(prev as SingleShopDataType),
+        [name]: name === "rating" ? parseFloat(value) : value,
+      }));
+    }
   };
 
-  const handleSubmitCreateNewShop = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitCreateNewShop = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     if (
-      newHotdogShop?.photo.length < 1 ||
-      newHotdogShop?.name.length < 1 ||
-      newHotdogShop?.location.length < 1 ||
-      newHotdogShop?.about.length < 1
+      !newHotdogShop.photo ||
+      newHotdogShop.name.length < 1 ||
+      newHotdogShop.location.length < 1 ||
+      newHotdogShop.about.length < 1
     ) {
       setErrMsg(true);
       return;
     }
 
     setErrMsg(false);
+
+    const formData = new FormData();
+    formData.append("file", newHotdogShop.photo);
+    formData.append("upload_preset", import.meta.env.VITE_CLOUDINARY_PRESET);
+
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${
+          import.meta.env.VITE_CLOUDINARY_NAME
+        }/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const url = data.secure_url.split("/");
+        const uploadedImageUrl = url[url.length - 1];
+
+        console.log(uploadedImageUrl);
+
+        setHotdogShops((prev) => [
+          ...prev,
+          { ...newHotdogShop, photo: uploadedImageUrl },
+        ]);
+      } else {
+        console.log("Error uploading image:", data);
+      }
+    } catch (error) {
+      console.log("Error uploading image:", error);
+    }
+
     setIsAddinghotdogShop(false);
-    setHotdogShops((prev) => [...prev, { ...newHotdogShop }]);
 
     setNewHotdogShop({
       photo: "",
