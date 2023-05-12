@@ -49,8 +49,8 @@ const ShopCard = ({
       <Card>
         <CardMedia
           sx={{ height: 160 }}
-          image={shopImage}
-          title="green iguana"
+          image={`https://res.cloudinary.com/dwpshizth/image/upload/c_fit,h_160,w_345/${shopImage}`}
+          title={`Image of ${shopName}`}
         />
         <CardContent>
           <Box display="flex" flexDirection="column" gap={2}>

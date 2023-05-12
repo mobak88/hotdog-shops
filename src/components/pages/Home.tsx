@@ -72,10 +72,6 @@ const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
     fetchData();
   }, [searchLocation, hotdogShops]);
 
-  useEffect(() => {
-    console.log(isEditingShop);
-  }, [isEditingShop]);
-
   return (
     <Box
       sx={{
