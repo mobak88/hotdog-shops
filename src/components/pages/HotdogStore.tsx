@@ -48,7 +48,7 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
         }}
       >
         <img
-          src={hotdogShop?.photo}
+          src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop?.photo}`}
           alt=""
           style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
         />

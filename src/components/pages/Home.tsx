@@ -35,37 +35,40 @@ const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
         );
 
         const inputData = await inputResponse.json();
-        const inputCoords = [
-          inputData.results[0].lat,
-          inputData.results[0].lon,
-        ];
 
-        const fetchPromises = hotdogShops.map((shop) => {
-          return fetch(
-            `https://api.geoapify.com/v1/geocode/search?text=${
-              shop?.location
-            }&format=json&apiKey=${import.meta.env.VITE_GEOAPIFI_API}`
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              const distance = calculateDistance(
-                inputCoords[0],
-                inputCoords[1],
-                data.results[0].lat,
-                data.results[0].lon
-              );
+        if (inputData.results && inputData.results.length > 0) {
+          const inputCoords = [
+            inputData.results[0].lat,
+            inputData.results[0].lon,
+          ];
 
-              if (distance < 3) {
-                return shop;
-              }
-            });
-        });
+          const fetchPromises = hotdogShops.map((shop) => {
+            return fetch(
+              `https://api.geoapify.com/v1/geocode/search?text=${
+                shop?.location
+              }&format=json&apiKey=${import.meta.env.VITE_GEOAPIFI_API}`
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                const distance = calculateDistance(
+                  inputCoords[0],
+                  inputCoords[1],
+                  data.results[0].lat,
+                  data.results[0].lon
+                );
 
-        const nearbyShopsData = await Promise.all(fetchPromises);
-        const filteredShops = nearbyShopsData.filter(
-          Boolean
-        ) as SingleShopDataType[];
-        setNearbyShops(filteredShops);
+                if (distance < 3) {
+                  return shop;
+                }
+              });
+          });
+
+          const nearbyShopsData = await Promise.all(fetchPromises);
+          const filteredShops = nearbyShopsData.filter(
+            Boolean
+          ) as SingleShopDataType[];
+          setNearbyShops(filteredShops);
+        }
       }
     };
 

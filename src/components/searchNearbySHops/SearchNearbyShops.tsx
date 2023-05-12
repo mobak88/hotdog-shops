@@ -18,12 +18,16 @@ const SearchNearbyShops = ({
 }: SearchNearbySHopsType) => {
   const [userInput, setUserInput] = useState("");
   const [errMsg, setErrMsg] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     if (nearbyShops.length > 0) {
       setErrMsg(false);
+      setIsSearching(true);
+    } else if (nearbyShops.length < 1 && userInput.length > 0) {
+      setErrMsg(true);
     }
-  }, [nearbyShops]);
+  }, [nearbyShops.length]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
@@ -31,7 +35,7 @@ const SearchNearbyShops = ({
 
   const handleUserSearch = () => {
     setSearchLocation(userInput);
-    if (userInput.length < 1 || nearbyShops.length < 1) {
+    if (userInput.length < 1) {
       setErrMsg(true);
     }
   };
@@ -40,7 +44,10 @@ const SearchNearbyShops = ({
     setNearbyShops([]);
     setErrMsg(false);
     setUserInput("");
+    setIsSearching(false);
   };
+
+  console.log(isSearching);
 
   return (
     <Stack gap={2} direction="column">
@@ -55,9 +62,11 @@ const SearchNearbyShops = ({
         <Button variant="contained" onClick={handleUserSearch}>
           Search
         </Button>
-        <Button onClick={handleClearSearch} variant="outlined">
-          Show all
-        </Button>
+        {isSearching && (
+          <Button onClick={handleClearSearch} variant="outlined">
+            Show all
+          </Button>
+        )}
       </Stack>
       {errMsg && <Typography>No results try a diffferent search</Typography>}
     </Stack>
