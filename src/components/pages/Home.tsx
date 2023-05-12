@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+  useContext,
+} from "react";
 import ShopCards from "../cards/ShopCards";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -7,6 +13,7 @@ import { calculateDistance } from "../../helpers/calcDIstance";
 import SearchNearbyShops from "../searchNearbySHops/SearchNearbyShops";
 import EditHotdogShopForm from "../editHotdogShopForm/EditHotdogShopForm";
 import AddHotdogShop from "../addHotdogShop/AddHotdogShop";
+import { LoggedInContext } from "../../App";
 
 export interface HotdogShopType {
   hotdogShops: SingleShopDataType[];
@@ -25,6 +32,8 @@ const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
     editing: false,
     id: null,
   });
+
+  const { isLoggedIn } = useContext(LoggedInContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,10 +99,12 @@ const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
       <Typography variant="h2" color="text.primary">
         Hot Dog stores
       </Typography>
-      <AddHotdogShop
-        hotdogShops={hotdogShops}
-        setHotdogShops={setHotdogShops}
-      />
+      {isLoggedIn && (
+        <AddHotdogShop
+          hotdogShops={hotdogShops}
+          setHotdogShops={setHotdogShops}
+        />
+      )}
       <SearchNearbyShops
         setNearbyShops={setNearbyShops}
         setSearchLocation={setSearchLocation}

@@ -27,7 +27,6 @@ const Login = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setIsLoggedIn(true);
   };
 
   const handleLogin = () => {
