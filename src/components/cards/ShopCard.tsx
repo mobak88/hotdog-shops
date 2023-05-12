@@ -49,7 +49,7 @@ const ShopCard = ({
       <Card>
         <CardMedia
           sx={{ height: 160 }}
-          image={`https://res.cloudinary.com/dwpshizth/image/upload/c_fit,h_160,w_345/${shopImage}`}
+          image={`https://res.cloudinary.com/dwpshizth/image/upload/c_fit,h_320,w_690/${shopImage}`}
           title={`Image of ${shopName}`}
         />
         <CardContent>
