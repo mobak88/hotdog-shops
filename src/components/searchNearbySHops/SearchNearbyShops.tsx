@@ -27,6 +27,8 @@ const SearchNearbyShops = ({
     } else if (nearbyShops.length < 1 && userInput.length > 0) {
       setErrMsg(true);
     }
+    // Ignoring next line, if userInput is included as a dependancy the err msg gets fired when it shouldnt
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nearbyShops.length]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,8 +49,6 @@ const SearchNearbyShops = ({
     setIsSearching(false);
   };
 
-  console.log(isSearching);
-
   return (
     <Stack gap={2} direction="column">
       <Stack gap={2} direction={{ sm: "column", md: "row" }}>
@@ -68,7 +68,11 @@ const SearchNearbyShops = ({
           </Button>
         )}
       </Stack>
-      {errMsg && <Typography>No results try a diffferent search</Typography>}
+      {errMsg && (
+        <Typography color="error">
+          No results try a diffferent search
+        </Typography>
+      )}
     </Stack>
   );
 };

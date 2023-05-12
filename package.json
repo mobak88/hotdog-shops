@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.12.3",
     "@types/react-leaflet": "^3.0.0",
+    "axios": "^1.4.0",
+    "cloudinary": "^1.36.4",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -6,6 +6,7 @@ import { SingleShopDataType } from "../../App";
 import { calculateDistance } from "../../helpers/calcDIstance";
 import SearchNearbyShops from "../searchNearbySHops/SearchNearbyShops";
 import EditHotdogShopForm from "../editHotdogShopForm/EditHotdogShopForm";
+import AddHotdogShop from "../addHotdogShop/AddHotdogShop";
 
 export interface HotdogShopType {
   hotdogShops: SingleShopDataType[];
@@ -89,6 +90,10 @@ const Home = ({ hotdogShops, setHotdogShops }: HotdogShopType) => {
       <Typography variant="h2" color="text.primary">
         Hot Dog stores
       </Typography>
+      <AddHotdogShop
+        hotdogShops={hotdogShops}
+        setHotdogShops={setHotdogShops}
+      />
       <SearchNearbyShops
         setNearbyShops={setNearbyShops}
         setSearchLocation={setSearchLocation}

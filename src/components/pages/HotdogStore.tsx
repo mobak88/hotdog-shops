@@ -42,44 +42,55 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
       <Box
         sx={{
           display: "flex",
-          gap: "10px",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <img
-          src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop?.photo}`}
-          alt=""
-          style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
-        />
         <Box
           sx={{
-            width: "100%",
-            maxWidth: "1000px",
             display: "flex",
+            gap: "10px",
             flexDirection: "column",
-            gap: "20px",
-            padding: "50px 0px",
+            alignItems: "center",
+            maxWidth: "1500px",
           }}
         >
-          <Typography variant="h2" color="text.primary">
-            {hotdogShop?.name}
-          </Typography>
-          <Rating
-            name="half-rating-read"
-            value={hotdogShop?.rating || null}
-            precision={0.5}
-            readOnly
+          <img
+            src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop?.photo}`}
+            alt=""
+            style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
           />
-          <Typography variant="body2" color="text.secondary">
-            {hotdogShop?.about}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {hotdogShop?.location}
-          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              maxWidth: "1500px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              padding: "50px 0px",
+            }}
+          >
+            <Typography variant="h2" color="text.primary">
+              {hotdogShop?.name}
+            </Typography>
+            <Rating
+              name="half-rating-read"
+              value={hotdogShop?.rating || null}
+              precision={0.5}
+              readOnly
+            />
+            <Typography variant="body2" color="text.secondary">
+              {hotdogShop?.about}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {hotdogShop?.location}
+            </Typography>
+          </Box>
+          {shopCoords && (
+            <ShopMap about={hotdogShop?.about} coords={shopCoords} />
+          )}
         </Box>
       </Box>
-      {shopCoords && <ShopMap about={hotdogShop?.about} coords={shopCoords} />}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { Link } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+import { LoggedInContext } from "../../App";
 
 type ShopCardType = {
   shopImage: string;
@@ -28,6 +29,8 @@ const ShopCard = ({
   id,
   setIsEditingShop,
 }: ShopCardType) => {
+  const { isLoggedIn } = useContext(LoggedInContext);
+
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event.target instanceof HTMLButtonElement) {
       event.preventDefault();
@@ -82,13 +85,19 @@ const ShopCard = ({
             </Typography>
           </Box>
         </CardContent>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <CardActions>
-            <Button onClick={handleButtonClick} variant="outlined" size="small">
-              Edit
-            </Button>
-          </CardActions>
-        </Box>
+        {isLoggedIn && (
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CardActions>
+              <Button
+                onClick={handleButtonClick}
+                variant="outlined"
+                size="small"
+              >
+                Edit
+              </Button>
+            </CardActions>
+          </Box>
+        )}
       </Card>
     </Link>
   );
