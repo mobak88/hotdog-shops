@@ -33,7 +33,7 @@ const Login = () => {
   const handleLogin = () => {
     if (
       credentials.Username !== import.meta.env.VITE_USERNAME ||
-      credentials.password !== import.meta.env.VITE_pASSWORD
+      credentials.password !== import.meta.env.VITE_PASSWORD
     ) {
       setErrMsg(true);
       return;
