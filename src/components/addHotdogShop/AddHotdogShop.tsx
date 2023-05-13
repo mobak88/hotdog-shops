@@ -80,8 +80,6 @@ const AddHotdogShop = ({ hotdogShops, setHotdogShops }: AddHotdogShopType) => {
         const url = data.secure_url.split("/");
         const uploadedImageUrl = url[url.length - 1];
 
-        console.log(uploadedImageUrl);
-
         setHotdogShops((prev) => [
           ...prev,
           { ...newHotdogShop, photo: uploadedImageUrl },
@@ -105,8 +103,6 @@ const AddHotdogShop = ({ hotdogShops, setHotdogShops }: AddHotdogShopType) => {
       attribution: "",
     });
   };
-
-  console.log(newHotdogShop);
 
   return (
     <Box

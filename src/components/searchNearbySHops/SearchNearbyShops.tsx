@@ -46,6 +46,7 @@ const SearchNearbyShops = ({
     setNearbyShops([]);
     setErrMsg(false);
     setUserInput("");
+    setSearchLocation("");
     setIsSearching(false);
   };
 

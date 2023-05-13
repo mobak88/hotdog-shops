@@ -36,8 +36,6 @@ const EditHotdogShopForm = ({
     }
   };
 
-  console.log(hotdogShop);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setHotdogShop((prev) => ({
