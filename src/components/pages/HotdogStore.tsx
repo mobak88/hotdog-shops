@@ -37,6 +37,10 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
     }
   }, [hotdogShop]);
 
+  const attributionMarkup = hotdogShop?.attribution
+    ? { __html: hotdogShop.attribution }
+    : undefined;
+
   return (
     <>
       <Box
@@ -60,6 +64,13 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
               src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop.photo}`}
               alt=""
               style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
+            />
+          )}
+          {attributionMarkup && (
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              dangerouslySetInnerHTML={attributionMarkup}
             />
           )}
           <Box
