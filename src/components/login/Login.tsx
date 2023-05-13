@@ -56,8 +56,6 @@ const Login = () => {
     setCredentials({ Username: "", password: "" });
   };
 
-  console.log(isLoggedIn);
-
   return (
     <Box
       sx={{
@@ -79,7 +77,7 @@ const Login = () => {
             Hot Dog stores
           </Typography>
           <Button variant="text" color="inherit" onClick={handleClickOpen}>
-            Open form dialog
+            {!isLoggedIn ? "Login" : "Logout"}
           </Button>
           {!isLoggedIn && (
             <Dialog open={open} onClose={handleClose}>

@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useContext } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
-import { Link } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { LoggedInContext } from "../../App";
@@ -40,13 +40,13 @@ const ShopCard = ({
   };
 
   return (
-    <Link
-      href={`/store/${id}`}
-      sx={{
+    <RouterLink
+      to={`/store/${id}`}
+      style={{
+        textDecoration: "none",
         maxWidth: 345,
         height: "100%",
         width: "100%",
-        textDecoration: "none",
       }}
     >
       <Card>
@@ -99,7 +99,7 @@ const ShopCard = ({
           </Box>
         )}
       </Card>
-    </Link>
+    </RouterLink>
   );
 };
 

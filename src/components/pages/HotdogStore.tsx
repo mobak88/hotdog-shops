@@ -55,11 +55,13 @@ const HotdogStore = ({ hotdogShops }: HotdogShopType) => {
             maxWidth: "1500px",
           }}
         >
-          <img
-            src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop?.photo}`}
-            alt=""
-            style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
-          />
+          {hotdogShop?.photo && (
+            <img
+              src={`https://res.cloudinary.com/dwpshizth/image/upload/${hotdogShop.photo}`}
+              alt=""
+              style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
+            />
+          )}
           <Box
             sx={{
               width: "100%",
