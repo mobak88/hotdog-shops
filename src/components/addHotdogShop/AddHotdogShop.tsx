@@ -20,6 +20,7 @@ const AddHotdogShop = ({ hotdogShops, setHotdogShops }: AddHotdogShopType) => {
     rating: 2.5,
     id: hotdogShops.length + 2,
     about: "",
+    attribution: "",
   });
 
   const handleIsAddingHotdogShop = () => setIsAddinghotdogShop(true);
@@ -101,6 +102,7 @@ const AddHotdogShop = ({ hotdogShops, setHotdogShops }: AddHotdogShopType) => {
       rating: 2.5,
       id: hotdogShops.length + 2,
       about: "",
+      attribution: "",
     });
   };
 

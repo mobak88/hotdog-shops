@@ -13,6 +13,7 @@ export type SingleShopDataType = {
   rating: number;
   id: number;
   about: string;
+  attribution: string;
 };
 
 type LoggedInContextType = {

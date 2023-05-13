@@ -46,6 +46,7 @@ const ShopCards = ({ hotdogShops, setIsEditingShop }: ShopCardsInterface) => {
               shopLocation={shop.location}
               shopRating={shop.rating}
               id={shop.id}
+              attribution={shop.attribution}
             />
           </Grid>
         ))}
