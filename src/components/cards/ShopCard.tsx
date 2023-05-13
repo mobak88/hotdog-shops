@@ -61,6 +61,7 @@ const ShopCard = ({
           textDecoration: "none",
           height: "100%",
           width: "100%",
+          marginBottom: attribution ? "0" : "20px",
         }}
       >
         <Card>
